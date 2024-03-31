@@ -1,0 +1,11 @@
+﻿  Building 'km' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  main.cpp
+  km.vcxproj -> C:\Users\cvs0_\Documents\GitHub\Fortnite-External-Source\km\x64\Debug\km.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\cvs0_\Documents\GitHub\Fortnite-External-Source\km\x64\Debug\km.sys
+  
+  Driver is 'Universal'.
+  Inf2Cat task was skipped as there were no inf files to process
+  
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

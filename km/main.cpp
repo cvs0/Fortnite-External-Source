@@ -26,13 +26,20 @@ __int64 request_handler(uintptr_t request)
 	return 0;
 }
 
-NTSTATUS driver_entry()
+extern "C" NTSTATUS DriverEntry(
+	_In_ PDRIVER_OBJECT DriverObject,
+	_In_ PUNICODE_STRING RegistryPath
+)
 {
+	UNREFERENCED_PARAMETER(DriverObject);
+	UNREFERENCED_PARAMETER(RegistryPath);
+
 	const uintptr_t win32k = utils::get_kernel_module("win32k.sys");
 	if (!win32k) return STATUS_FAILED_DRIVER_ENTRY;
 	uintptr_t nt_qword = utils::pattern_scan(win32k, nt_qword_sig, nt_qword_mask);
 	if (!nt_qword) return STATUS_FAILED_DRIVER_ENTRY;
 	uintptr_t nt_qword_deref = nt_qword + *(int*)((PUCHAR)nt_qword + 3) + 7;
 	*reinterpret_cast<uintptr_t*>(nt_qword_deref) = reinterpret_cast<uintptr_t>(&request_handler);
+
 	return STATUS_SUCCESS;
 }

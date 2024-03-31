@@ -1,5 +1,8 @@
 #pragma once
+#pragma warning(disable:4305)
+#pragma warning(disable:4309)
 #include "defs.hpp"
+#include <intrin.h>
 
 namespace utils
 {
